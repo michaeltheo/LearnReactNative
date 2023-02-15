@@ -1,16 +1,29 @@
 import { Text, View, TextInput, StyleSheet } from "react-native";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { elevation } from "../common/style";
-export class Search extends Component {
-  render() {
-    return (
-      <View style={[styles.container, styles.elevation]}>
-        <FontAwesome name="search" size={25} />
-        <TextInput style={styles.input} placeholder="Restaurant, food..." />
-      </View>
-    );
-  }
+export function Search({ setTerm }) {
+  const [input, setInput] = useState("");
+  const handleEndEditing = () => {
+    if (!input) return;
+    setTerm(input);
+    setInput("");
+  };
+
+  return (
+    <View style={[styles.container, styles.elevation]}>
+      <FontAwesome name="search" size={25} />
+      <TextInput
+        value={input}
+        style={styles.input}
+        onChangeText={(text) => {
+          setInput(text);
+        }}
+        placeholder="Restaurant, food..."
+        onEndEditing={handleEndEditing}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

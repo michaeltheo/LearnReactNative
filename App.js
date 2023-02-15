@@ -1,10 +1,13 @@
 import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
 import { StyleSheet, Text, View, FlatList } from "react-native";
+import Categories from "./src/components/Categories";
 import CategoryItem from "./src/components/CategoryItem";
 import Header from "./src/components/Header";
 import Search from "./src/components/Search";
 
 export default function App() {
+  const [term, setTerm] = useState("Burger");
   const commonCategories = [
     {
       name: "Burger",
@@ -35,24 +38,8 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <Header />
-      <Search></Search>
-      <View style={{ marginLeft: 20 }}>
-        <FlatList
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={(category) => category.name}
-          data={commonCategories}
-          renderItem={({ item, index }) => {
-            return (
-              <CategoryItem
-                name={item.name}
-                imageUrl={item.imageUrl}
-                index={index}
-              />
-            );
-          }}
-        />
-      </View>
+      <Search setTerm={setTerm}></Search>
+      <Categories categories={commonCategories} setTerm={setTerm} term={term} />
     </View>
   );
 }
