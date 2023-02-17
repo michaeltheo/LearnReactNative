@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, FlatList } from "react-native";
 import Categories from "./src/components/Categories";
 import CategoryItem from "./src/components/CategoryItem";
 import Header from "./src/components/Header";
+import Restaurants from "./src/components/Restaurants";
 import Search from "./src/components/Search";
 
 export default function App() {
@@ -40,6 +41,7 @@ export default function App() {
       <Header />
       <Search setTerm={setTerm}></Search>
       <Categories categories={commonCategories} setTerm={setTerm} term={term} />
+      <Restaurants />
     </View>
   );
 }

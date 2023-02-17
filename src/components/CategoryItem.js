@@ -1,11 +1,4 @@
-import {
-  Text,
-  StyleSheet,
-  View,
-  Image,
-  Button,
-  TouchableOpacity,
-} from "react-native";
+import { Text, StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import React, { Component } from "react";
 import { elevation } from "../common/style";
 
